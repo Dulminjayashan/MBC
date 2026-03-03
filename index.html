@@ -589,6 +589,38 @@ main{flex:1;margin-left:258px;padding:28px 32px;min-height:100vh}
 .sf-clock-time{font-family:var(--numfont);font-size:22px;font-weight:600;color:var(--goldl);letter-spacing:2px;line-height:1.1}
 .sf-clock-date{font-size:11px;color:var(--ts);margin-top:3px;letter-spacing:.3px}
 .sf-clock-day{font-size:10px;color:var(--td);letter-spacing:1.5px;text-transform:uppercase;margin-top:2px}
+
+/* ─ DROPBOX ─ */
+.dbx-section{padding:10px 14px 12px;border-top:1px solid var(--border)}
+.dbx-label{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--td);margin-bottom:8px;display:flex;align-items:center;gap:6px}
+.dbx-label::after{content:'';flex:1;height:1px;background:var(--border)}
+.dbx-input{width:100%;background:rgba(75,158,255,.05);border:1px solid var(--border);border-radius:7px;color:var(--tp);font-family:'DM Sans',sans-serif;font-size:11px;padding:7px 10px;outline:none;transition:all .2s;box-sizing:border-box;margin-bottom:6px}
+.dbx-input:focus{border-color:var(--borderl);background:rgba(75,158,255,.1)}
+.dbx-input::placeholder{color:var(--td)}
+.dbx-btn{width:100%;padding:8px;border-radius:7px;font-size:11.5px;font-weight:500;cursor:pointer;border:1.5px solid;font-family:'DM Sans',sans-serif;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:6px;box-sizing:border-box}
+.dbx-btn-connect{border-color:rgba(0,120,255,.5);color:#4d9fff;background:rgba(0,100,255,.08)}
+.dbx-btn-connect:hover{background:rgba(0,100,255,.18);border-color:rgba(0,120,255,.8)}
+.dbx-status{display:flex;align-items:center;gap:7px;padding:7px 10px;background:rgba(61,217,164,.06);border:1px solid rgba(61,217,164,.2);border-radius:7px;margin-bottom:6px}
+.dbx-dot{width:7px;height:7px;border-radius:50%;background:var(--green);flex-shrink:0;box-shadow:0 0 6px rgba(61,217,164,.6)}
+.dbx-status-text{font-size:11px;color:var(--green);font-weight:500;flex:1}
+.dbx-disc{background:none;border:none;color:var(--td);font-size:10px;cursor:pointer;padding:2px 5px;border-radius:4px;transition:all .15s;font-family:'DM Sans',sans-serif}
+.dbx-disc:hover{color:var(--red);background:var(--redd)}
+.dbx-save-btn{border-color:rgba(61,217,164,.4);color:var(--green);background:rgba(61,217,164,.07);margin-top:2px}
+.dbx-save-btn:hover{background:rgba(61,217,164,.18);border-color:var(--green)}
+.dbx-save-btn:disabled{opacity:.5;cursor:not-allowed}
+.dbx-loading{text-align:center;font-size:11px;color:var(--ts);padding:6px;animation:pulse 1.2s ease infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.dbx-hint{font-size:10px;color:var(--td);line-height:1.5;margin-top:4px}
+.dbx-hint a{color:var(--goldl);text-decoration:none}
+.dbx-hint a:hover{text-decoration:underline}
+
+/* ─ LOADING OVERLAY ─ */
+#dbx-boot-overlay{position:fixed;inset:0;z-index:99998;background:var(--bg);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:14px}
+#dbx-boot-overlay::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 80% 60% at 10% 0%,rgba(32,80,180,.32) 0%,transparent 60%),radial-gradient(ellipse 60% 50% at 90% 10%,rgba(100,50,220,.2) 0%,transparent 55%);pointer-events:none}
+.dbx-boot-logo{font-family:'Cormorant Garamond',serif;font-size:42px;font-weight:700;background:linear-gradient(135deg,var(--goldl),var(--blue));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:4px}
+.dbx-boot-msg{font-size:13px;color:var(--ts);letter-spacing:1px}
+.dbx-boot-spin{width:32px;height:32px;border:2px solid var(--border);border-top-color:var(--blue);border-radius:50%;animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
 </style>
 </head>
 <body>
@@ -639,7 +671,41 @@ main{flex:1;margin-left:258px;padding:28px 32px;min-height:100vh}
     <div class="sf-clock-day" id="sf-day">------</div>
   </div>
   <div class="sf"><div class="nwpill"><div class="nwl">Net Worth</div><div class="nwv" id="snw">—</div></div></div>
+
+  <!-- Dropbox Section -->
+  <div class="dbx-section">
+    <div class="dbx-label">Dropbox Sync</div>
+
+    <!-- Not connected -->
+    <div id="dbx-connect-area">
+      <input class="dbx-input" id="dbx-appkey-input" type="text" placeholder="App Key paste කරන්න..." autocomplete="off">
+      <button class="dbx-btn dbx-btn-connect" onclick="dbxConnect()">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L6.5 5.5 12 9 17.5 5.5 12 2zm-5.5 7L1 12.5 6.5 16 12 12.5 6.5 9zm11 0L12 12.5l5.5 3.5L23 12.5 17.5 9zm-8.5 8L3.5 20.5 9 24l5.5-3.5L9 17zm5.5 0l-5.5 3.5L14.5 24 20 20.5 14.5 17z"/></svg>
+        Connect Dropbox
+      </button>
+      <div class="dbx-hint">Dropbox App Key නැත්නම් <a href="https://www.dropbox.com/developers/apps" target="_blank">මෙතනින්</a> create කරන්න.</div>
+    </div>
+
+    <!-- Connected -->
+    <div id="dbx-status-area" style="display:none">
+      <div class="dbx-status">
+        <div class="dbx-dot"></div>
+        <div class="dbx-status-text">Dropbox Connected</div>
+        <button class="dbx-disc" onclick="dbxDisconnect()" title="Disconnect">✕</button>
+      </div>
+      <button class="dbx-btn dbx-save-btn" id="dbx-save-btn" onclick="dbxSaveFile()">
+        ☁️ Save to Dropbox
+      </button>
+    </div>
+  </div>
 </aside>
+
+<!-- Dropbox boot loading overlay -->
+<div id="dbx-boot-overlay" style="display:none">
+  <div class="dbx-boot-logo">MBC</div>
+  <div class="dbx-boot-spin"></div>
+  <div class="dbx-boot-msg" id="dbx-boot-msg">Dropbox එකෙන් data load කරනවා...</div>
+</div>
 
 <!-- ════════ MAIN ════════ -->
 <main>
@@ -2649,10 +2715,184 @@ updateClock();
 setInterval(updateClock,1000);
 
 // ══════════════════════════════════════════════════
+// DROPBOX INTEGRATION (PKCE OAuth — no secret needed)
+// ══════════════════════════════════════════════════
+const DBX_LS   = 'mbc_dbx_v1';
+const DBX_FILE = '/data.json';
+
+function dbxCfg()    { try { return JSON.parse(localStorage.getItem(DBX_LS)||'{}'); } catch { return {}; } }
+function dbxCfgSet(c){ localStorage.setItem(DBX_LS, JSON.stringify(c)); }
+
+// PKCE helpers
+function b64url(buf){ return btoa(String.fromCharCode(...new Uint8Array(buf))).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,''); }
+function rndStr(n)  { const a=new Uint8Array(n); crypto.getRandomValues(a); return b64url(a); }
+async function sha256b64(s){ const e=new TextEncoder().encode(s); return b64url(await crypto.subtle.digest('SHA-256',e)); }
+
+// Get a valid access token (auto-refresh if expired)
+async function dbxToken(){
+  const c = dbxCfg();
+  if(!c.refresh_token || !c.app_key) return null;
+  if(c.access_token && c.expires_at && Date.now() < c.expires_at - 300000) return c.access_token;
+  // Refresh
+  try {
+    const r = await fetch('https://api.dropbox.com/oauth2/token',{
+      method:'POST', headers:{'Content-Type':'application/x-www-form-urlencoded'},
+      body: new URLSearchParams({ grant_type:'refresh_token', refresh_token:c.refresh_token, client_id:c.app_key })
+    });
+    if(!r.ok){ dbxCfgSet({app_key:c.app_key}); updateDbxUI(); return null; }
+    const d = await r.json();
+    c.access_token = d.access_token;
+    c.expires_at   = Date.now() + d.expires_in*1000;
+    dbxCfgSet(c);
+    return d.access_token;
+  } catch { return null; }
+}
+
+// Step 1 — Start OAuth (redirect to Dropbox)
+async function dbxConnect(){
+  const key = (document.getElementById('dbx-appkey-input')?.value||'').trim();
+  if(!key){ toast('⚠️ App Key enter කරන්න!'); document.getElementById('dbx-appkey-input')?.focus(); return; }
+  const c = dbxCfg(); c.app_key = key; dbxCfgSet(c);
+  const verifier  = rndStr(64);
+  const challenge = await sha256b64(verifier);
+  sessionStorage.setItem('dbx_cv', verifier);
+  const redirect = window.location.origin + window.location.pathname;
+  const params = new URLSearchParams({ client_id:key, response_type:'code', code_challenge:challenge,
+    code_challenge_method:'S256', token_access_type:'offline', redirect_uri:redirect });
+  window.location.href = 'https://www.dropbox.com/oauth2/authorize?' + params;
+}
+
+// Step 2 — Handle OAuth callback (code in URL)
+async function dbxHandleCallback(){
+  const params = new URLSearchParams(window.location.search);
+  const code = params.get('code');
+  if(!code) return false;
+  history.replaceState({}, '', window.location.pathname);
+  const verifier = sessionStorage.getItem('dbx_cv'); sessionStorage.removeItem('dbx_cv');
+  const c = dbxCfg();
+  const redirect = window.location.origin + window.location.pathname;
+  try {
+    const r = await fetch('https://api.dropbox.com/oauth2/token',{
+      method:'POST', headers:{'Content-Type':'application/x-www-form-urlencoded'},
+      body: new URLSearchParams({ code, grant_type:'authorization_code', code_verifier:verifier,
+        client_id:c.app_key, redirect_uri:redirect })
+    });
+    if(!r.ok) throw new Error('Token exchange failed');
+    const d = await r.json();
+    c.access_token  = d.access_token;
+    c.refresh_token = d.refresh_token;
+    c.expires_at    = Date.now() + d.expires_in*1000;
+    dbxCfgSet(c);
+    toast('✅ Dropbox connected!');
+    updateDbxUI();
+    return true;
+  } catch(e) { toast('❌ Dropbox connect failed: ' + e.message); return false; }
+}
+
+// Load data.json from Dropbox
+async function dbxLoad(){
+  const token = await dbxToken();
+  if(!token) return false;
+  try {
+    const r = await fetch('https://content.dropboxapi.com/2/files/download',{
+      method:'POST',
+      headers:{ 'Authorization':'Bearer '+token, 'Dropbox-API-Arg': JSON.stringify({path:DBX_FILE}) }
+    });
+    if(r.status === 409) return false; // file doesn't exist yet — first time
+    if(!r.ok) throw new Error('HTTP '+r.status);
+    const data = await r.json();
+    D = data;
+    localStorage.setItem(LS, JSON.stringify(D));
+    return true;
+  } catch(e) { console.warn('Dropbox load error:', e.message); return false; }
+}
+
+// Upload data.json to Dropbox
+async function dbxSaveFile(){
+  const token = await dbxToken();
+  if(!token){ toast('❌ Dropbox not connected'); return; }
+  const btn = document.getElementById('dbx-save-btn');
+  if(btn){ btn.textContent='⏳ Saving...'; btn.disabled=true; }
+  try {
+    const r = await fetch('https://content.dropboxapi.com/2/files/upload',{
+      method:'POST',
+      headers:{
+        'Authorization':'Bearer '+token,
+        'Dropbox-API-Arg': JSON.stringify({path:DBX_FILE, mode:'overwrite', autorename:false, mute:true}),
+        'Content-Type':'application/octet-stream'
+      },
+      body: JSON.stringify(D, null, 2)
+    });
+    if(!r.ok) throw new Error('HTTP '+r.status);
+    localStorage.setItem(LS, JSON.stringify(D));
+    toast('☁️ Dropbox backup saved!');
+  } catch(e) { toast('❌ Save failed: ' + e.message); }
+  finally { if(btn){ btn.textContent='☁️ Save to Dropbox'; btn.disabled=false; } }
+}
+
+// Disconnect
+function dbxDisconnect(){
+  if(!confirm('Dropbox disconnect කරන්නද?')) return;
+  const c = dbxCfg();
+  dbxCfgSet({ app_key: c.app_key || '' }); // keep app_key so they don't have to re-enter
+  updateDbxUI();
+  toast('Dropbox disconnected');
+}
+
+// Update sidebar UI
+function updateDbxUI(){
+  const c = dbxCfg();
+  const connected = !!c.refresh_token;
+  const connEl   = document.getElementById('dbx-connect-area');
+  const statusEl = document.getElementById('dbx-status-area');
+  if(connEl)  connEl.style.display  = connected ? 'none'  : 'block';
+  if(statusEl)statusEl.style.display= connected ? 'block' : 'none';
+  // Pre-fill app key if saved
+  const inp = document.getElementById('dbx-appkey-input');
+  if(inp && c.app_key && !connected) inp.value = c.app_key;
+}
+
+// ══════════════════════════════════════════════════
 // BOOT
 // ══════════════════════════════════════════════════
-load();
-rerender();
+async function boot(){
+  // 1. Check for OAuth callback
+  const isCallback = window.location.search.includes('code=');
+  if(isCallback){
+    // Show overlay while processing
+    const ov = document.getElementById('dbx-boot-overlay');
+    if(ov){ ov.style.display='flex'; document.getElementById('dbx-boot-msg').textContent='Dropbox authenticate කරනවා...'; }
+    await dbxHandleCallback();
+  }
+
+  const c = dbxCfg();
+  const hasRefresh = !!c.refresh_token;
+
+  if(hasRefresh){
+    // Show loading overlay
+    const ov = document.getElementById('dbx-boot-overlay');
+    if(ov) ov.style.display='flex';
+    document.getElementById('dbx-boot-msg').textContent = 'Dropbox එකෙන් data load කරනවා...';
+    const ok = await dbxLoad();
+    if(!ok){
+      // Dropbox file not found → use localStorage
+      load();
+      if(document.getElementById('dbx-boot-msg'))
+        document.getElementById('dbx-boot-msg').textContent = 'Local data load කරනවා...';
+    }
+    if(ov){ ov.style.display='none'; }
+  } else {
+    load(); // fallback: localStorage
+  }
+
+  updateDbxUI();
+  rerender();
+
+  // Show password screen after data load
+  document.getElementById('pw-input')?.focus();
+}
+
+boot();
 </script>
 </body>
 </html>
