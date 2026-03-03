@@ -1,0 +1,400 @@
+{
+  "_meta": {
+    "exportedAt": "2026-03-03T18:44:19.658Z",
+    "appVersion": "MBC_v5",
+    "description": "MBC Personal Wealth Tracker — Full Data Backup"
+  },
+  "data": {
+    "netWorthHistory": [
+      {
+        "year": 2018,
+        "amount": 405700,
+        "change": 0,
+        "changePct": 0,
+        "monthlyAvg": 0
+      },
+      {
+        "year": 2019,
+        "amount": 432000,
+        "change": 26300,
+        "changePct": 6.482622627557308,
+        "monthlyAvg": 2191.6666666666665
+      },
+      {
+        "year": 2020,
+        "amount": 711601.57,
+        "change": 279601.56999999995,
+        "changePct": 64.72258564814814,
+        "monthlyAvg": 23300.13083333333
+      },
+      {
+        "year": 2021,
+        "amount": 1382492.68,
+        "change": 670891.11,
+        "changePct": 94.2790373551312,
+        "monthlyAvg": 55907.5925
+      },
+      {
+        "year": 2022,
+        "amount": 1025268.18,
+        "change": -357224.4999999999,
+        "changePct": -25.839160320183385,
+        "monthlyAvg": -29768.708333333325
+      },
+      {
+        "year": 2023,
+        "amount": 1602922.21,
+        "change": 577654.0299999999,
+        "changePct": 56.34174953132749,
+        "monthlyAvg": 48137.83583333332
+      },
+      {
+        "year": 2024,
+        "amount": 2295714.05,
+        "change": 692791.8399999999,
+        "changePct": 43.22055279276465,
+        "monthlyAvg": 57732.65333333332
+      },
+      {
+        "year": 2025,
+        "amount": 3702140.64,
+        "change": 1406426.5900000003,
+        "changePct": 61.263143377983006,
+        "monthlyAvg": 117202.21583333336
+      },
+      {
+        "year": 2026,
+        "amount": 3896217.18,
+        "change": 194076.54000000004,
+        "changePct": 5.242278964312929,
+        "monthlyAvg": 16173.045000000004
+      }
+    ],
+    "liabilities": [
+      {
+        "name": "Sudu (Loan 1)",
+        "amount": 100000,
+        "category": "Personal Loan",
+        "payments": [],
+        "additionalDebts": []
+      },
+      {
+        "name": "Sudu (Loan 2)",
+        "amount": 194280,
+        "category": "Personal Loan",
+        "payments": [],
+        "additionalDebts": []
+      },
+      {
+        "name": "Promodh",
+        "amount": 20000,
+        "category": "Personal Loan",
+        "payments": [],
+        "additionalDebts": []
+      },
+      {
+        "name": "DD",
+        "amount": 20000,
+        "category": "Personal Loan",
+        "payments": [],
+        "additionalDebts": []
+      }
+    ],
+    "stock": {
+      "marketValue": 2433514,
+      "buyingPower": 12715,
+      "cost": 1544429.3,
+      "futureDividend": 87550
+    },
+    "cimWallet": 45951.24,
+    "fd": [],
+    "loans": [
+      {
+        "name": "Heshan",
+        "amount": 450000,
+        "category": "Personal Loan",
+        "badDebts": [],
+        "payments": [],
+        "additionalLoans": []
+      },
+      {
+        "name": "Sujani",
+        "amount": 469500,
+        "category": "Personal Loan",
+        "badDebts": [],
+        "payments": [],
+        "additionalLoans": []
+      },
+      {
+        "name": "Amandi",
+        "amount": 141000,
+        "category": "Personal Loan",
+        "badDebts": [],
+        "payments": [],
+        "additionalLoans": []
+      },
+      {
+        "name": "Dulaj 1st Loan",
+        "amount": 45000,
+        "category": "Personal Loan",
+        "badDebts": [],
+        "payments": [],
+        "additionalLoans": []
+      },
+      {
+        "name": "Mother",
+        "amount": 27500,
+        "category": "Family",
+        "badDebts": [],
+        "payments": [],
+        "additionalLoans": []
+      },
+      {
+        "name": "Ruksha",
+        "amount": 45218,
+        "category": "Personal Loan",
+        "badDebts": [],
+        "payments": [],
+        "additionalLoans": []
+      },
+      {
+        "name": "A L A R S Abeywickrama",
+        "amount": 385000,
+        "category": "Personal Loan",
+        "badDebts": [],
+        "payments": [],
+        "additionalLoans": []
+      },
+      {
+        "name": "Ash",
+        "amount": 83398,
+        "category": "Personal Loan",
+        "badDebts": [
+          {
+            "date": "",
+            "amount": 13700,
+            "note": "Other",
+            "recovered": false
+          }
+        ],
+        "payments": [],
+        "additionalLoans": []
+      }
+    ],
+    "cashOnHand": 1160,
+    "banks": [
+      {
+        "name": "People's Bank",
+        "transactions": [
+          {
+            "date": "2026-03-03",
+            "desc": "Balance",
+            "type": "CR",
+            "credit": 9000,
+            "debit": 0
+          }
+        ]
+      },
+      {
+        "name": "Sampath Bank",
+        "transactions": [
+          {
+            "date": "3/3/2026",
+            "desc": "Balance",
+            "type": "CR",
+            "credit": 7685.44,
+            "debit": 0
+          },
+          {
+            "date": "3/3/2026",
+            "desc": "Sujani",
+            "type": "CR",
+            "credit": 5500,
+            "debit": 0
+          },
+          {
+            "date": "3/3/2026",
+            "desc": "Sujani",
+            "type": "CR",
+            "credit": 0,
+            "debit": 5494.5
+          }
+        ]
+      }
+    ],
+    "cf": {
+      "2025": [
+        {
+          "month": "Jan",
+          "income": 85975.71,
+          "expense": 22887,
+          "incomeEntries": [],
+          "expenseEntries": []
+        },
+        {
+          "month": "Feb",
+          "income": 100550.71,
+          "expense": 22187,
+          "incomeEntries": [],
+          "expenseEntries": []
+        },
+        {
+          "month": "Mar",
+          "income": 124666.85,
+          "expense": 36645,
+          "incomeEntries": [],
+          "expenseEntries": []
+        },
+        {
+          "month": "Apr",
+          "income": 128691.24,
+          "expense": 20866.17,
+          "incomeEntries": [],
+          "expenseEntries": []
+        },
+        {
+          "month": "May",
+          "income": 88516.95,
+          "expense": 35349,
+          "incomeEntries": [],
+          "expenseEntries": []
+        },
+        {
+          "month": "Jun",
+          "income": 100412.77,
+          "expense": 22962.99,
+          "incomeEntries": [],
+          "expenseEntries": []
+        },
+        {
+          "month": "Jul",
+          "income": 116241.95,
+          "expense": 22412,
+          "incomeEntries": [],
+          "expenseEntries": []
+        },
+        {
+          "month": "Aug",
+          "income": 93079.77,
+          "expense": 40133.38,
+          "incomeEntries": [],
+          "expenseEntries": []
+        },
+        {
+          "month": "Sep",
+          "income": 79248.85,
+          "expense": 57639.7,
+          "incomeEntries": [],
+          "expenseEntries": []
+        },
+        {
+          "month": "Oct",
+          "income": 86141.95,
+          "expense": 57324,
+          "incomeEntries": [],
+          "expenseEntries": []
+        },
+        {
+          "month": "Nov",
+          "income": 82412.77,
+          "expense": 24025.82,
+          "incomeEntries": [],
+          "expenseEntries": []
+        },
+        {
+          "month": "Dec",
+          "income": 84516.95,
+          "expense": 33384,
+          "incomeEntries": [],
+          "expenseEntries": []
+        }
+      ],
+      "2026": [
+        {
+          "month": "Jan",
+          "income": 85963.77,
+          "expense": 9750,
+          "incomeEntries": [],
+          "expenseEntries": []
+        },
+        {
+          "month": "Feb",
+          "income": 40412.71,
+          "expense": 38306,
+          "incomeEntries": [],
+          "expenseEntries": []
+        },
+        {
+          "month": "Mar",
+          "income": 0,
+          "expense": 0,
+          "incomeEntries": [],
+          "expenseEntries": []
+        },
+        {
+          "month": "Apr",
+          "income": 0,
+          "expense": 0,
+          "incomeEntries": [],
+          "expenseEntries": []
+        },
+        {
+          "month": "May",
+          "income": 0,
+          "expense": 0,
+          "incomeEntries": [],
+          "expenseEntries": []
+        },
+        {
+          "month": "Jun",
+          "income": 0,
+          "expense": 0,
+          "incomeEntries": [],
+          "expenseEntries": []
+        },
+        {
+          "month": "Jul",
+          "income": 0,
+          "expense": 0,
+          "incomeEntries": [],
+          "expenseEntries": []
+        },
+        {
+          "month": "Aug",
+          "income": 0,
+          "expense": 0,
+          "incomeEntries": [],
+          "expenseEntries": []
+        },
+        {
+          "month": "Sep",
+          "income": 0,
+          "expense": 0,
+          "incomeEntries": [],
+          "expenseEntries": []
+        },
+        {
+          "month": "Oct",
+          "income": 0,
+          "expense": 0,
+          "incomeEntries": [],
+          "expenseEntries": []
+        },
+        {
+          "month": "Nov",
+          "income": 0,
+          "expense": 0,
+          "incomeEntries": [],
+          "expenseEntries": []
+        },
+        {
+          "month": "Dec",
+          "income": 0,
+          "expense": 0,
+          "incomeEntries": [],
+          "expenseEntries": []
+        }
+      ]
+    }
+  }
+}
